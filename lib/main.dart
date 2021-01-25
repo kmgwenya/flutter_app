@@ -49,6 +49,24 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+class PictureWidget extends StatefulWidget {
+  @override
+  _PictureWidgetState createState() => _PictureWidgetState();
+}
+
+class _PictureWidgetState extends State<PictureWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Row(children: <Widget>[
+
+      ],
+      ),
+    );
+  }
+}
+
+
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
@@ -104,6 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+            FlatButton(onPressed: ()=>(){}, child: Text('PRESS ME NOW'))
           ],
         ),
       ),
