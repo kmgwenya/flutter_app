@@ -57,15 +57,20 @@ class PictureWidget extends StatefulWidget {
 class _PictureWidgetState extends State<PictureWidget> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Row(children: <Widget>[
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Picture Widget'),
+      ),
+      body: Column(
+            children: <Widget>[
+              Image(image: NetworkImage('')),
+              FlatButton(onPressed: (){Navigator.of(context).pop(_createRoute());}, child: Text('PRESS ME!!!!!')),
 
-      ],
+            ],
       ),
     );
   }
 }
-
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
@@ -122,7 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
-            FlatButton(onPressed: ()=>(){}, child: Text('PRESS ME NOW'))
+            FlatButton(onPressed: () {Navigator.of(context).push(_createRoute());}, child: Text('PRESS ME NOW')),
           ],
         ),
       ),
@@ -133,4 +138,13 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+}
+
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => PictureWidget(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      return child;
+    },
+  );
 }
